@@ -1,0 +1,51 @@
+<body>
+    <h1>Hospital SignUpgit</h1>
+    <!-- <form action="/register" method="POST">
+      <label for="email">Email:</label>
+      <input type="email" name="email" required>
+      <label for="username">Username:</label>
+      <input type="text" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" name="password" required>
+      <button type="submit">Register</button>
+    </form> -->
+    <div class="row mt-3">
+        <div class="col-6">
+          <form action="/hospitalRegister" method="post" class="needs-validation">
+            <div class="mb-3 from">
+              <label for="username" class="form-label">Username</label>
+              <input
+                class="form-control"
+                type="text"
+                name="username"
+                placeholder=""
+                required
+              />
+              <div class="invalid-feedback">Please enter username</div>
+            </div>
+            <div class="mb-3 from">
+              <label for="email" class="form-label">Email</label>
+              <input
+                class="form-control"
+                type="email"
+                name="email"
+                placeholder=""
+                required
+              />
+            </div>
+            <div class="mb-3 from">
+              <label for="password" class="form-label">Password</label>
+              <input
+                class="form-control"
+                type="password"
+                name="password"
+                placeholder=""
+                required
+              />
+            </div>
+            <button class="btn btn-success">SignUp</button>
+          </form>
+        </div>
+      </div>
+  </body>
+  <% layout("/layouts/boilerplate") -%>

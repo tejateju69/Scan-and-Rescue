@@ -1,0 +1,20 @@
+<% layout("/layouts/boilerplate") -%> 
+<body>
+    <% if (username && userType === 'User') { %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">User Details</h5>
+            <p class="card-text">Username: <%= username %></p>
+            <p class="card-text">User ID: <%= currUser.userId %></p>
+            <p class="card-text">Mobile Number: <%= currUser.mobileNo %></p>
+            <p class="card-text">Guardian Number: <%= currUser.guardianNo %></p>
+            <p class="card-text">Blood Group: <%= currUser.bloodGrp %></p>
+            <p class="card-text">Health Details: <%= currUser.healthDetails %></p>
+            <a href="#" class="btn btn-primary">Edit</a>
+          </div>
+        </div>
+      <% } else { %>
+        <h1>Welcome</h1>
+        <% } %>
+    
+</body>

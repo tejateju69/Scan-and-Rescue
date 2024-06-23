@@ -1,0 +1,51 @@
+<% layout("/layouts/boilerplate") -%>
+<style>
+
+
+  .search-container {
+    offset: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem !important;
+  }
+h4{
+    width: 100%;
+}
+  .search-input {
+    width: 300px; /* Adjust input width */
+    margin-right: 10px; /* Add right margin */
+  }
+
+  .search-button {
+    min-width: 100px; /* Adjust button width */
+    margin-top: 1rem !important;
+  }
+
+  .welcome-message {
+    font-size: 32px; /* Increase font size of welcome message */
+    margin-bottom: 20px; /* Add some bottom margin for spacing */
+  }
+</style>
+
+<body>
+  <% if (username) { %>
+    <div class="welcome-message">
+      <h1>Welcome, <%= username %></h1>
+    </div>
+    
+    <div class="search-container">
+        <h4>Enter the userID (biometric id)</h4>
+        <form class="form-inline my-2 my-lg-0" method="post" action="/search">
+          <input class="form-control mr-sm-2 search-input" type="search" name="userId" placeholder="Search" aria-label="Search" required>
+          <button class="btn btn-outline-success my-2 my-sm-0 search-button" type="submit" >Search</button>
+      </form>
+      
+    </div>
+  <% } else { %>
+    <div class="text-center"> <!-- Center align the welcome message -->
+      <h1 class="mb-4">Welcome</h1>
+    </div>
+  <% } %>   
+</body>

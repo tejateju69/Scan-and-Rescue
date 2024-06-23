@@ -1,0 +1,30 @@
+<% layout("/layouts/boilerplate") -%>
+<div class="row mt-3">
+  <div class="col-6">
+    <h2>Hospital Login</h2>
+    <form action="/hospitalLogin" method="post" class="needs-validation">
+      <div class="mb-3 from">
+        <label for="username" class="form-label">Username</label>
+        <input
+          class="form-control"
+          type="text"
+          name="username"
+          placeholder=""
+          required
+        />
+        <div class="invalid-feedback">Please enter username</div>
+      </div>
+      <div class="mb-3 from">
+        <label for="password" class="form-label">Password</label>
+        <input
+          class="form-control"
+          type="password"
+          name="password"
+          placeholder=""
+          required
+        />
+      </div>
+      <button class="btn btn-success">Login</button>
+    </form>
+  </div>
+</div>

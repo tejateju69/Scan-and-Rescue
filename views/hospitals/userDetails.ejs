@@ -1,0 +1,22 @@
+<% layout("/layouts/boilerplate") -%><% if (username ) { %>
+   <body>
+    <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+        <div class="card" style="width: 30rem;">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Welcome <%= username %></h2>
+            <div class="mt-4"> <!-- Add margin top to move the card slightly up -->
+              <h5 class="card-title text-center">User Details</h5>
+              <p class="card-text"><strong>Username:</strong> <%= currUser.username %></p>
+              <p class="card-text"><strong>User ID:</strong> <%= currUser.userId %></p>
+              <p class="card-text"><strong>Mobile Number:</strong> <%= currUser.mobileNo %></p>
+              <p class="card-text"><strong>Guardian Number:</strong> <%= currUser.guardianNo %></p>
+              <p class="card-text"><strong>Blood Group:</strong> <%= currUser.bloodGrp %></p>
+              <p class="card-text"><strong>Health Details:</strong> <%= currUser.healthDetails %></p>
+  
+              <a href="/hospitalHome" class="btn btn-primary">back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% } %>
+   </body>

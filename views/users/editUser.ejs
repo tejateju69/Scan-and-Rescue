@@ -1,0 +1,82 @@
+<% layout("/layouts/boilerplate") -%>
+
+<div class="row">
+    <div class="col-8 mb-3">
+      <h2>Edit User</h2>
+      <form
+        action="/userEdit/<%=currUser.id%>?_method=put"
+        method="post"
+        novalidate
+        class="needs-validation"
+        
+      >     
+        <div class="mb-3 from">
+            
+            <label for="username" class="form-label">User Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="username"
+              value="<%=currUser.username%>"
+              placeholder="Enter user name"
+              required
+            />
+            <div class="invalid-feedback">Please enter user name</div>
+          </div>
+          <div class="mb-3 from">
+            
+            <label for="mobileNo" class="form-label">mobileNo</label>
+            <input
+              class="form-control"
+              type="text"
+              name="mobileNo"
+              value="<%=currUser.mobileNo %>"
+              placeholder="Enter mobileNo"
+              required
+            />
+            <div class="invalid-feedback">Please enter mobileNo</div>
+          </div>
+          <div class="mb-3 from">
+            
+            <label for="guardianNo" class="form-label">guardianNo</label>
+            <input
+              class="form-control"
+              type="text"
+              name="guardianNo"
+              value="<%=currUser.guardianNo %>"
+              placeholder="Enter guardianNo"
+              required
+            />
+            <div class="invalid-feedback">Please enter mobileNo</div>
+          </div>
+          <div class="mb-3 from">
+            <label for="bloodGrp" class="form-label">bloodGrp</label>
+            <input
+              class="form-control"
+              type="text"
+              name="bloodGrp"
+              value="<%=currUser.bloodGrp %>"
+              placeholder="Enter bloodGrp"
+              required
+            />
+            <div class="invalid-feedback">Please enter bloodGrp</div>
+          </div>
+        <div class="mb-3">
+          <label for="healthDetails" class="form-label">healthDetails</label>
+          <textarea
+            class="form-control"
+            type="text"
+            name="healthDetails"
+            
+            placeholder="Enter about healthDetails"
+            required
+          ><%=currUser.healthDetails %></textarea>
+          <div class="invalid-feedback">healthDetails</div>
+        </div>
+  
+
+        
+        <button class="form-btn btn btn-dark">submit</button>
+      </form>
+    </div>
+  </div>

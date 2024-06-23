@@ -1,0 +1,10 @@
+<% layout("/layouts/boilerplate") -%> 
+<body>
+    <% if (username ) { %>
+        <h2>Welcome , <%= username %></h2>
+    <% } else { %>
+      <div class="text-center"> <!-- Center align the welcome message -->
+        <h1 class="mb-4">Welcome</h1>
+      </div>
+    <% } %>   
+</body>

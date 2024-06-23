@@ -1,0 +1,99 @@
+<% layout("/layouts/boilerplate") -%>
+
+<div class="row">
+    <div class="col-8 mb-3">
+      <h2>Create new User</h2>
+      <form
+        action="/userRegister"
+        method="post"
+       
+        class="needs-validation"
+        
+      >
+        <div class="mb-3 from">
+            
+          <label for="userId" class="form-label">User Id</label>
+          <input
+            class="form-control"
+            type="text"
+            name="userId"
+            placeholder="Enter userId"
+            required
+          />
+          <div class="invalid-feedback">Please enter userid</div>
+        </div>
+        <div class="mb-3 from">
+            
+            <label for="username" class="form-label">User Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="username"
+              placeholder="Enter user name"
+              required
+            />
+            <div class="invalid-feedback">Please enter user name</div>
+          </div>
+          <div class="mb-3 from">
+            
+            <label for="mobileNo" class="form-label">mobileNo</label>
+            <input
+              class="form-control"
+              type="text"
+              name="mobileNo"
+              placeholder="Enter mobileNo"
+              required
+            />
+            <div class="invalid-feedback">Please enter mobileNo</div>
+          </div>
+          <div class="mb-3 from">
+            
+            <label for="guardianNo" class="form-label">guardianNo</label>
+            <input
+              class="form-control"
+              type="text"
+              name="guardianNo"
+              placeholder="Enter guardianNo"
+              required
+            />
+            <div class="invalid-feedback">Please enter mobileNo</div>
+          </div>
+          <div class="mb-3 from">
+            <label for="bloodGrp" class="form-label">bloodGrp</label>
+            <input
+              class="form-control"
+              type="text"
+              name="bloodGrp"
+              placeholder="Enter bloodGrp"
+              required
+            />
+            <div class="invalid-feedback">Please enter bloodGrp</div>
+          </div>
+        <div class="mb-3">
+          <label for="healthDetails" class="form-label">healthDetails</label>
+          <textarea
+            class="form-control"
+            type="text"
+            name="healthDetails"
+            placeholder="Enter about healthDetails"
+            required
+          ></textarea>
+          <div class="invalid-feedback">healthDetails</div>
+        </div>
+        <div class="mb-3 from">
+            <label for="password" class="form-label">password</label>
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              required
+            />
+            <div class="invalid-feedback">Please enter password</div>
+          </div>
+
+        
+        <button class="form-btn btn btn-dark">add</button>
+      </form>
+    </div>
+  </div>
