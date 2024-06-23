@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
@@ -19,8 +20,9 @@ app.engine("ejs", ejsMate);
 
 // Connect to MongoDB
 async function main() {
+  const url = process.env.db_url
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/BiometricProject');
+    await mongoose.connect(url);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Failed to connect to MongoDB", err);
