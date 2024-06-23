@@ -240,6 +240,9 @@ app.put("/userEdit/:id", async (req, res) => {
 app.get("/home",(req,res)=>{
   res.render("users/home.ejs")
 })
+app.get("/",(req,res)=>{
+  res.render("users/home.ejs")
+})
 app.post('/search', async (req, res) => {
   const { userId } = req.body;
 
