@@ -39,6 +39,7 @@ h4{
         <h4>Enter the userID (biometric id)</h4>
         <form class="form-inline my-2 my-lg-0" method="post" action="/search">
           <input class="form-control mr-sm-2 search-input" type="search" name="userId" placeholder="Search" aria-label="Search" required>
+          <p class="err-msg"><%= msg %></p>
           <button class="btn btn-outline-success my-2 my-sm-0 search-button" type="submit" >Search</button>
       </form>
       
@@ -46,6 +47,7 @@ h4{
   <% } else { %>
     <div class="text-center"> <!-- Center align the welcome message -->
       <h1 class="mb-4">Welcome</h1>
+      
     </div>
   <% } %>   
 </body>

@@ -1,7 +1,7 @@
-<% layout("/layouts/boilerplate") -%> 
+<% layout("/layouts/boilerplate") -%>
 <body>
     <% if (username && userType === 'User') { %>
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem; margin: auto; margin-top: 5rem;">
           <div class="card-body">
             <h5 class="card-title">User Details</h5>
             <p class="card-text">Username: <%= username %></p>
@@ -14,7 +14,9 @@
           </div>
         </div>
       <% } else { %>
-        <h1>Welcome</h1>
-        <% } %>
-    
+        <div class="text-center" style="margin-top: 5rem;">
+          <h1 style="font-size: 2.5rem; color: #fe424d;">Welcome</h1>
+          <p style="font-size: 1.5rem;">Swift response, saving lives: Scan & Rescue in action</p>
+        </div>
+      <% } %>
 </body>

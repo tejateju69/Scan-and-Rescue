@@ -6,11 +6,14 @@ const path = require("path");
 const ejsMate = require("ejs-mate");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+
+const ExpressError = require("./utils/ExpressError.js");
 const Hospital = require("./models/hospital");
 const User = require("./models/user");
 const session = require("express-session");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
+const wrapAsync = require('./utils/wrapAsync.js');
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "/views"));
@@ -44,6 +47,19 @@ app.use(session({
 
 app.use(flash());
 
+app.use((req, res, next) => {
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  if (req.user) {
+    res.locals.username = req.user.username;
+    res.locals.userType = req.user.constructor.modelName; // 'Hospital' or 'User'
+  } else {
+    res.locals.username = null;
+    res.locals.userType = null;
+  }
+  res.locals.currUser = req.user;
+  next();
+});
 // Initialize Passport and session handling
 app.use(passport.initialize());
 app.use(passport.session());
@@ -99,6 +115,7 @@ app.post('/hospitalLogin', (req, res, next) => {
     }
     if (!hospital) {
       console.log("Hospital not found");
+      throw new ExpressError(404,"Invalid access , incorrect username or password");
       req.flash('error', 'Invalid email or password');
       return res.redirect('/hospitalLogin');
     }
@@ -152,7 +169,7 @@ app.get('/userLogin', (req, res) => {
   res.render("users/userLogin.ejs");
 });
 
-app.post('/userLogin', (req, res, next) => {
+app.post('/userLogin', (async (req, res, next) => {
   console.log("User login request received");
   passport.authenticate('user-local', (err, user, info) => {
     console.log("Authentication callback triggered");
@@ -162,6 +179,7 @@ app.post('/userLogin', (req, res, next) => {
     }
     if (!user) {
       console.log("User not found");
+      throw new ExpressError(404,"Invalid access , incorrect username or password");
       req.flash('error', 'Invalid username or password');
       return res.redirect('/userLogin');
     }
@@ -175,7 +193,8 @@ app.post('/userLogin', (req, res, next) => {
       return res.redirect('/userHome');
     });
   })(req, res, next);
-});
+}));
+
 
 app.get('/userRegister', (req, res) => {
   res.render("users/userRegister.ejs");
@@ -253,7 +272,9 @@ app.post('/search', async (req, res) => {
       console.log("succ")
       res.render('hospitals/userDetails.ejs', { currUser });
     } else {
+      console.log("fail")
       req.flash('error', 'User not found');
+      
       res.redirect('/hospitalHome');
     }
   } catch (err) {
@@ -270,9 +291,17 @@ app.all("*", (req, res, next) => {
   next(new ExpressError(404, "page Not Found"));
 });
 
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  console.log("Flash messages set:", { success: res.locals.success, error: res.locals.error });
+  next();
+});
+
 //Error handling
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went Worng" } = err;
+  // console.log(err)
   res.status(statusCode).render("error.ejs", { err });
 });
 

@@ -1,8 +1,10 @@
 <% layout("/layouts/boilerplate.ejs") -%>
 
 <div class="row">
-  <div class="alert alert-danger mt -3 col-8" role="alert">
+  <div class="alert alert-danger mt-3 col-8" role="alert">
     <p><%= err.message %></p>
+    <a href="javascript:history.back()" class="btn btn-primary">
+      <i class="fas fa-arrow-left"></i> Go Back
+    </a>
   </div>
 </div>
-

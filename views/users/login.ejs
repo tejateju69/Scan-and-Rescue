@@ -1,10 +1,23 @@
-
 <% layout("/layouts/boilerplate") -%>
+
 <div class="row mt-3">
   <div class="col-6">
     <h2>Welcome Back</h2>
-    <form action="/login" method="post" novalidate class="needs-validation">
-      <div class="mb-3 from">
+
+    <!-- Flash messages -->
+    <% if (error && error.length > 0) { %>
+      <div class="alert alert-danger">
+        <%= error %>
+      </div>
+    <% } %>
+    <% if (success && success.length > 0) { %>
+      <div class="alert alert-success">
+        <%= success %>
+      </div>
+    <% } %>
+
+    <form action="/userLogin" method="post" novalidate class="needs-validation">
+      <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input
           class="form-control"
@@ -15,7 +28,7 @@
         />
         <div class="invalid-feedback">Please enter username</div>
       </div>
-      <div class="mb-3 from">
+      <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input
           class="form-control"
